@@ -2,9 +2,7 @@ import { sha256 } from './sha256';
 
 export class EthscriptionsAPI {
   baseUrl: string;
-  constructor(
-    baseUrl = 'https://eth-script-indexer-eca25c4cf43b.herokuapp.com'
-  ) {
+  constructor(baseUrl = 'https://ethscriber.xyz') {
     this.baseUrl = baseUrl;
   }
 
