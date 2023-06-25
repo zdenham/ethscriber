@@ -91,8 +91,9 @@ export function Ethscribe() {
         <>
           <div className="ethscribe-message">
             Success!{' '}
-            <a href={`https://etherscan.io/tx/${data?.hash}`}>
-              View Transaction
+            <a href={`https://etherscan.io/tx/${data?.hash}`}>View Txn</a>{' '}
+            <a href={`https://ethscriptions.com/${account?.address}`}>
+              View your Ethscriptions
             </a>
           </div>
         </>
