@@ -43,7 +43,11 @@ export function Ethscribe() {
 
   const onCopyHex = useCallback(() => {
     navigator.clipboard.writeText(hex);
-    alert(`Copied hex to clipboard: ${hex}`);
+
+    // delay so dom stays focused
+    setTimeout(() => {
+      alert(`Copied hex to clipboard: ${hex}`);
+    }, 250);
   }, [hex]);
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
