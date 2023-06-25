@@ -17,7 +17,8 @@ export function Page() {
             textAlign: 'center',
           }}
         >
-          A simple tool to inscribe text ethscriptions by{' '}
+          A simple tool to inscribe text{' '}
+          <a href="https://ethscriptions.com/">ethscriptions</a> by{' '}
           <a href="https://twitter.com/zac_denham">zacque.eth</a>.
         </div>
         <Ethscribe />

@@ -1,3 +1,9 @@
+# Ethscriber
+
+Ethscriber is a simple tool to inscribe text based [ethscriptions](https://ethscriptions.com/). Ethscriptions are a new type of NFT based on ethereum transaction calldata. They are very cheap and easy to mint and share. Ethscriber is a tool to easily inscribe text based ethscriptions.
+
+# Environment
+
 This is a [wagmi](https://wagmi.sh) + [RainbowKit](https://rainbowkit.com) + [Next.js](https://nextjs.org) project bootstrapped with [`create-wagmi`](https://github.com/wagmi-dev/wagmi/tree/main/packages/create-wagmi)
 
 # Getting Started
