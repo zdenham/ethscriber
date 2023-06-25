@@ -1,7 +1,7 @@
 'use client';
 
 import { useSendTransaction, useWaitForTransaction, useAccount } from 'wagmi';
-import { useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import { EthscriptionsAPI } from '../utils/ethscriptionsAPI';
 
 export function Ethscribe() {
@@ -46,7 +46,7 @@ export function Ethscribe() {
     alert(`Copied hex to clipboard: ${hex}`);
   }, [hex]);
 
-  const handleChange = useCallback((e) => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
     setText(text);
     setEncodedText(`data:,${text}`);

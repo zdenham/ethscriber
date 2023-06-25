@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^1.0.0",
+    "lokijs": "^1.5.12",
     "next": "^13.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

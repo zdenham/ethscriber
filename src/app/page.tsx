@@ -2,7 +2,7 @@ import CenteredContainer from '../components/CenteredContainer';
 import { ConnectButton } from '../components/ConnectButton';
 import { Ethscribe } from '../components/Ethscribe';
 
-export function Page() {
+function Home() {
   return (
     <>
       <div style={{ position: 'fixed', top: 10, right: 10 }}>
@@ -27,4 +27,4 @@ export function Page() {
   );
 }
 
-export default Page;
+export default Home;
