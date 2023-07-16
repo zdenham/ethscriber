@@ -119,6 +119,8 @@ export function Ethscribe() {
           padding: 10px;
           border-radius: 4px;
           border: none;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
 
         .ethscribe-button {
