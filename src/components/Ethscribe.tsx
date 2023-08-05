@@ -1,8 +1,9 @@
 'use client';
 
 import { useSendTransaction, useWaitForTransaction, useAccount } from 'wagmi';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { EthscriptionsAPI } from '../utils/ethscriptionsAPI';
+import { identify, track } from '../utils/analytics';
 
 export function Ethscribe() {
   const { data, error, isLoading, isError, sendTransaction } =
@@ -20,6 +21,9 @@ export function Ethscribe() {
   const onCheckAvailability = useCallback(async () => {
     const api = new EthscriptionsAPI();
     const { ownerAddress, isTaken } = await api.checkAvailability(encodedText);
+
+    track('checked_availability', { text });
+
     console.log('check availability', ownerAddress, isTaken);
     const message = isTaken
       ? `"${text}" text ethscription is already owned by ${ownerAddress}`
@@ -35,20 +39,24 @@ export function Ethscribe() {
       return;
     }
 
+    track('ethscribed', { text });
+
     sendTransaction({
       to: account.address,
       data: `0x${hex}`,
     });
-  }, [hex, account, sendTransaction]);
+  }, [hex, account, sendTransaction, text]);
 
   const onCopyHex = useCallback(() => {
     navigator.clipboard.writeText(hex);
+
+    track('copied_hex', { text });
 
     // delay so dom stays focused
     setTimeout(() => {
       alert(`Copied hex to clipboard: ${hex}`);
     }, 250);
-  }, [hex]);
+  }, [hex, text]);
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
@@ -56,6 +64,12 @@ export function Ethscribe() {
     setEncodedText(`data:,${text}`);
     setHex(Buffer.from(`data:,${text}`).toString('hex'));
   }, []);
+
+  useEffect(() => {
+    if (!account?.address) return;
+
+    identify(account.address);
+  }, [account.address]);
 
   return (
     <div className="ethscribe-container">
