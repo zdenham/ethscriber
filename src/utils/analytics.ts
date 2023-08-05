@@ -3,7 +3,6 @@ import mixpanel from 'mixpanel-browser';
 
 export const useMixpanel = () => {
   useEffect(() => {
-    console.log('mixpanel init', process.env.NEXT_PUBLIC_MIXPANEL_TOKEN);
     if (!process.env.NEXT_PUBLIC_MIXPANEL_TOKEN) {
       console.log('no mixpanel token');
       return;
