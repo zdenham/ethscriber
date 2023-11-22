@@ -2,11 +2,22 @@ import CenteredContainer from '../components/CenteredContainer';
 import { ConnectButton } from '../components/ConnectButton';
 import { Ethscribe } from '../components/Ethscribe';
 import { GithubButton } from '../components/GithubButton';
+import { Logo } from '../components/Logo';
 
 function Home() {
   return (
     <>
-      <div style={{ position: 'fixed', top: 10, left: 10 }}>
+      <div
+        style={{
+          position: 'fixed',
+          top: 10,
+          left: 10,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Logo />
+        <div style={{ marginLeft: 10 }} />
         <GithubButton />
       </div>
       <div style={{ position: 'fixed', top: 10, right: 10 }}>
