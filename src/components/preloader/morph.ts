@@ -18,7 +18,7 @@ interface Paddings {
   y: number;
 }
 
-var AsciiMorph = (function () {
+export var AsciiMorph = (function () {
   'use strict';
 
   var element: HTMLElement | null = null;

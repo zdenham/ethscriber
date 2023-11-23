@@ -3,11 +3,13 @@ import { ConnectButton } from '../components/ConnectButton';
 import { Ethscribe } from '../components/Ethscribe';
 import { GithubButton } from '../components/GithubButton';
 import { Logo } from '../components/Logo';
+import Preloader from '../components/preloader/Preloader';
 
 function Home() {
   return (
     <>
-      <div
+      <Preloader />
+      {/* <div
         style={{
           position: 'fixed',
           top: 10,
@@ -37,7 +39,7 @@ function Home() {
           <a href="https://twitter.com/zac_denham">zacque.eth</a>.
         </div>
         <Ethscribe />
-      </CenteredContainer>
+      </CenteredContainer> */}
     </>
   );
 }
