@@ -18,7 +18,7 @@ const Preloader: React.FC = () => {
 
     setTimeout(() => {
       setIsAnimateOut(true);
-    }, 2000);
+    }, 1800);
   }, []);
 
   return (
