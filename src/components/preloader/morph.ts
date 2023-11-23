@@ -26,7 +26,6 @@ export var AsciiMorph = (function () {
 
   var renderedData: string[] = [];
   var framesToAnimate: string[][] = [];
-  var myTimeout: NodeJS.Timeout | null = null;
 
   function extend(target: any, source: any): any {
     for (var key in source) {
@@ -203,7 +202,6 @@ export var AsciiMorph = (function () {
   }
 
   function morph(data: string[]): void {
-    if (myTimeout) clearTimeout(myTimeout);
     var frameData = prepareFrames(data.slice());
     animateFrames(frameData);
   }
@@ -245,16 +243,20 @@ export var AsciiMorph = (function () {
     animateFrame();
   }
 
+  let i = 0;
   function animateFrame(): void {
-    myTimeout = setTimeout(function () {
-      renderSquareData(framesToAnimate[0]);
-      framesToAnimate.shift();
-      if (framesToAnimate.length > 0) {
-        animateFrame();
-      }
-    }, 20);
+    if (framesToAnimate.length === 0) return;
+    renderSquareData(framesToAnimate[0]);
 
-    // framesToAnimate
+    i++;
+
+    if (i % 4 === 0) {
+      framesToAnimate.shift();
+    }
+
+    if (framesToAnimate.length > 0) {
+      requestAnimationFrame(animateFrame);
+    }
   }
 
   function main(element: HTMLElement, canvasSize: CanvasDimensions): void {

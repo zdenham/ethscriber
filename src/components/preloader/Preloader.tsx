@@ -1,6 +1,5 @@
 'use client';
-
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ascii } from './art';
 import { AsciiMorph } from './morph';
 
@@ -10,16 +9,24 @@ var asciis = [asciiArr];
 
 const Preloader: React.FC = () => {
   const ref = useRef(null);
+  const containerRef = useRef(null);
+  const [isAnimateOut, setIsAnimateOut] = useState(false);
 
   useEffect(() => {
-    AsciiMorph(ref.current, { x: 10, y: 10 });
+    AsciiMorph(ref.current, { x: 50, y: 50 });
     AsciiMorph.morph(asciis[0]);
+
+    setTimeout(() => {
+      setIsAnimateOut(true);
+    }, 2000);
   }, []);
 
   return (
     <div
+      ref={containerRef}
       style={{
         position: 'fixed',
+        background: 'white',
         width: '100vw',
         height: '100vh',
         top: 0,
@@ -27,7 +34,10 @@ const Preloader: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        pointerEvents: 'none',
+        zIndex: 1000,
       }}
+      className={isAnimateOut ? 'container' : ''}
     >
       <pre
         style={{
@@ -36,10 +46,27 @@ const Preloader: React.FC = () => {
           whiteSpace: 'pre',
           margin: '1em 0px',
           zIndex: 1000,
-          fontSize: '0.5em',
+          fontSize: '8px',
         }}
         ref={ref}
       />
+      <style jsx>{`
+        .container {
+          animation: fade-out 0.5s ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        @keyframes fade-out {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1.2);
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 };
