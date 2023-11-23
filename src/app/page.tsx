@@ -3,10 +3,12 @@ import { ConnectButton } from '../components/ConnectButton';
 import { Ethscribe } from '../components/Ethscribe';
 import { GithubButton } from '../components/GithubButton';
 import { Logo } from '../components/Logo';
+import Preloader from '../components/preloader/Preloader';
 
 function Home() {
   return (
     <>
+      <Preloader />
       <div
         style={{
           position: 'fixed',
