@@ -13,12 +13,13 @@ const Preloader: React.FC = () => {
   const [isAnimateOut, setIsAnimateOut] = useState(false);
 
   useEffect(() => {
-    AsciiMorph(ref.current, { x: 50, y: 50 });
-    AsciiMorph.morph(asciis[0]);
-
-    setTimeout(() => {
+    async function runAnimation() {
+      AsciiMorph(ref.current, { x: 50, y: 50 });
+      await AsciiMorph.morph(asciis[0], 500);
       setIsAnimateOut(true);
-    }, 1800);
+    }
+
+    runAnimation();
   }, []);
 
   return (
