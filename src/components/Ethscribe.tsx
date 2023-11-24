@@ -119,15 +119,16 @@ export function Ethscribe() {
         .ethscribe-container {
           display: flex;
           flex-direction: column;
-          width: 450px;
-          max-width: 80vw;
+          font-family: monospace;
+          width: 475px;
+          max-width: 85vw;
         }
 
         .ethscribe-input,
         .ethscribe-encoded-text,
         .ethscribe-hex {
           font-size: 16px;
-          font-family: 'Roboto', sans-serif;
+          font-family: monospace;
           margin-bottom: 10px;
           background-color: #f7f7f7;
           padding: 10px;
@@ -145,7 +146,7 @@ export function Ethscribe() {
           border-radius: 4px;
           cursor: pointer;
           margin-bottom: 10px;
-          font-family: 'Roboto', sans-serif;
+          font-family: monospace;
         }
 
         .ethscribe-message {

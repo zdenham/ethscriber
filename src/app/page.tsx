@@ -26,10 +26,10 @@ function Home() {
         <ConnectButton />
       </div>
       <CenteredContainer>
-        <h2 style={{ fontFamily: '"Roboto", sans-serif' }}>Ethscriber</h2>
+        <h2 style={{ fontFamily: 'monospace' }}>Ethscriber</h2>
         <div
           style={{
-            fontFamily: '"Roboto", sans-serif',
+            fontFamily: 'monospace',
             marginBottom: 25,
             textAlign: 'center',
           }}
