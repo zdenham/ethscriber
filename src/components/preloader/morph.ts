@@ -262,6 +262,12 @@ export var AsciiMorph = (function () {
     const frame = framesToAnimate[frameIndex];
 
     renderSquareData(frame);
+    
+    if (frameIndex < framesToAnimate.length - 1) {
+      requestAnimationFrame(() => animateFrame(duration, callback));
+    } else {
+      callback();
+    }
   }
 
   function main(element: HTMLElement, canvasSize: CanvasDimensions): void {
