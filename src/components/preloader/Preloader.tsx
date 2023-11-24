@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ascii } from './art';
 import { AsciiMorph } from './morph';
+import { delay } from '../../utils/delay';
 
 const asciiArr = ascii.split('\n');
 
@@ -13,12 +14,14 @@ const Preloader: React.FC = () => {
   const [isAnimateOut, setIsAnimateOut] = useState(false);
 
   useEffect(() => {
-    AsciiMorph(ref.current, { x: 50, y: 50 });
-    AsciiMorph.morph(asciis[0]);
-
-    setTimeout(() => {
+    async function runAnimation() {
+      AsciiMorph(ref.current, { x: 50, y: 50 });
+      await AsciiMorph.morph(asciis[0], 1000);
+      await delay(50);
       setIsAnimateOut(true);
-    }, 1800);
+    }
+
+    runAnimation();
   }, []);
 
   return (
@@ -27,10 +30,10 @@ const Preloader: React.FC = () => {
       style={{
         position: 'fixed',
         background: 'white',
-        width: '100vw',
-        height: '100vh',
-        top: 0,
-        left: 0,
+        width: '120vw',
+        height: '120vh',
+        top: '-10vh',
+        left: '-10vw',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -52,7 +55,7 @@ const Preloader: React.FC = () => {
       />
       <style jsx>{`
         .container {
-          animation: fade-out 0.5s ease-out;
+          animation: fade-out 0.5s cubic-bezier(1, -0.66, 0.62, -0.1);
           animation-fill-mode: forwards;
         }
 
@@ -62,7 +65,7 @@ const Preloader: React.FC = () => {
             opacity: 1;
           }
           100% {
-            transform: scale(1.2);
+            transform: scale(1.3);
             opacity: 0;
           }
         }

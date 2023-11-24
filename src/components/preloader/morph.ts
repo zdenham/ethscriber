@@ -201,9 +201,11 @@ export var AsciiMorph = (function () {
     renderedData = data;
   }
 
-  function morph(data: string[]): void {
-    var frameData = prepareFrames(data.slice());
-    animateFrames(frameData);
+  async function morph(data: string[], duration: number): Promise<void> {
+    return new Promise((resolve) => {
+      var frameData = prepareFrames(data.slice());
+      animateFrames(frameData, duration, () => resolve());
+    });
   }
 
   function prepareFrames(data: string[]): string[][] {
@@ -238,24 +240,33 @@ export var AsciiMorph = (function () {
     return deconstructionFrames.concat(constructionFrames);
   }
 
-  function animateFrames(frameData: string[][]): void {
+  let startTime: number;
+  async function animateFrames(
+    frameData: string[][],
+    duration: number,
+    callback: () => void
+  ): Promise<void> {
+    startTime = Date.now();
     framesToAnimate = frameData;
-    animateFrame();
+    animateFrame(duration, callback);
   }
 
-  let i = 0;
-  function animateFrame(): void {
-    if (framesToAnimate.length === 0) return;
-    renderSquareData(framesToAnimate[0]);
+  function animateFrame(duration: number, callback: () => void): void {
+    const now = Date.now();
+    const elapsed = now - startTime;
+    const progress = elapsed / duration;
+    const frameIndex = Math.min(
+      Math.floor(progress * framesToAnimate.length),
+      framesToAnimate.length - 1
+    );
+    const frame = framesToAnimate[frameIndex];
 
-    i++;
-
-    if (i % 4 === 0) {
-      framesToAnimate.shift();
-    }
-
-    if (framesToAnimate.length > 0) {
-      requestAnimationFrame(animateFrame);
+    renderSquareData(frame);
+    
+    if (frameIndex < framesToAnimate.length - 1) {
+      requestAnimationFrame(() => animateFrame(duration, callback));
+    } else {
+      callback();
     }
   }
 
