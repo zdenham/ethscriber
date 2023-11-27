@@ -1,6 +1,11 @@
 'use client';
 
-import { useSendTransaction, useWaitForTransaction, useAccount } from 'wagmi';
+import {
+  useSendTransaction,
+  useWaitForTransaction,
+  useAccount,
+  useChainId,
+} from 'wagmi';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { EthscriptionsAPI } from '../utils/ethscriptionsAPI';
 import { identify, track } from '../utils/analytics';
@@ -8,9 +13,12 @@ import { identify, track } from '../utils/analytics';
 export function Ethscribe() {
   const { data, error, isLoading, isError, sendTransaction } =
     useSendTransaction();
+
   const { isLoading: isPending, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   });
+
+  const chainId = useChainId();
 
   const account = useAccount();
 
@@ -50,8 +58,8 @@ export function Ethscribe() {
   useEffect(() => {
     if (!data?.hash) return;
 
-    track('completed_ethscription', { txnHash: data?.hash });
-  }, [data?.hash]);
+    track('completed_ethscription', { txnHash: data?.hash, chainId });
+  }, [data?.hash, chainId]);
 
   const onCopyHex = useCallback(() => {
     navigator.clipboard.writeText(hex);
