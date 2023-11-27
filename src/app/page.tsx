@@ -3,6 +3,7 @@ import { ConnectButton } from '../components/ConnectButton';
 import { Ethscribe } from '../components/Ethscribe';
 import { GithubButton } from '../components/GithubButton';
 import { Logo } from '../components/Logo';
+import MobileHidden from '../components/MobileHidden';
 import Preloader from '../components/preloader/Preloader';
 import Socials from '../components/Socials';
 
@@ -17,13 +18,27 @@ function Home() {
           left: 10,
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
+          height: 50,
         }}
       >
         <Logo />
         <div style={{ marginLeft: 10 }} />
-        <GithubButton />
+        <MobileHidden>
+          <GithubButton />
+        </MobileHidden>
       </div>
-      <div style={{ position: 'fixed', top: 10, right: 10 }}>
+      <div
+        style={{
+          position: 'fixed',
+          top: 10,
+          right: 10,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: 50,
+        }}
+      >
         <ConnectButton />
       </div>
       <CenteredContainer>
