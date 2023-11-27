@@ -47,13 +47,13 @@ export function Ethscribe() {
       return;
     }
 
-    track('ethscribed', { text });
+    track('ethscribed', { text, chainId });
 
     sendTransaction({
       to: account.address,
       data: `0x${hex}`,
     });
-  }, [hex, account, sendTransaction, text]);
+  }, [hex, account, sendTransaction, text, chainId]);
 
   useEffect(() => {
     if (!data?.hash) return;
