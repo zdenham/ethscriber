@@ -47,6 +47,12 @@ export function Ethscribe() {
     });
   }, [hex, account, sendTransaction, text]);
 
+  useEffect(() => {
+    if (!data?.hash) return;
+
+    track('completed_ethscription', { txnHash: data?.hash });
+  }, [data?.hash]);
+
   const onCopyHex = useCallback(() => {
     navigator.clipboard.writeText(hex);
 
