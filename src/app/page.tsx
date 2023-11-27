@@ -4,6 +4,7 @@ import { Ethscribe } from '../components/Ethscribe';
 import { GithubButton } from '../components/GithubButton';
 import { Logo } from '../components/Logo';
 import Preloader from '../components/preloader/Preloader';
+import Socials from '../components/Socials';
 
 function Home() {
   return (
@@ -40,6 +41,7 @@ function Home() {
         </div>
         <Ethscribe />
       </CenteredContainer>
+      <Socials />
     </>
   );
 }
