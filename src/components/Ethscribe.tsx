@@ -112,9 +112,9 @@ export function Ethscribe() {
       </button>
 
       {isLoading && <div className="ethscribe-message">Check wallet...</div>}
-      {isPending && (
+      {/* {isPending && (
         <div className="ethscribe-message">Transaction pending...</div>
-      )}
+      )} */}
       {isSuccess && (
         <>
           <div className="ethscribe-message">
