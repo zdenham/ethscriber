@@ -47,7 +47,7 @@ export function Ethscribe() {
       return;
     }
 
-    track('ethscribed', { text, chainId });
+    track('ethscribed', { text, chainId, receiver: account.address });
 
     sendTransaction({
       to: account.address,
