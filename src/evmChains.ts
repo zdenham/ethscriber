@@ -38,7 +38,6 @@ const opBNBMainnet: Chain = {
 };
 
 export const evmChains = [
-  opBNBMainnet,
   mainnet,
   arbitrum,
   avalanche,
@@ -49,6 +48,7 @@ export const evmChains = [
   canto,
   celo,
   fantom,
+  opBNBMainnet,
 ];
 
 
