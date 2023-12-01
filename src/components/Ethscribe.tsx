@@ -97,13 +97,15 @@ export function Ethscribe() {
       />
       <div className="ethscribe-encoded-text">{encodedText}</div>
       <div className="ethscribe-hex">{hex}</div>
-      <button
-        className="ethscribe-button"
-        type="button"
-        onClick={onCheckAvailability}
-      >
-        CHECK AVAILABILITY
-      </button>
+      {chainId === 1 && (
+        <button
+          className="ethscribe-button"
+          type="button"
+          onClick={onCheckAvailability}
+        >
+          CHECK AVAILABILITY
+        </button>
+      )}
       <button className="ethscribe-button" type="button" onClick={onCopyHex}>
         COPY HEX
       </button>
