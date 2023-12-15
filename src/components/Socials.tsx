@@ -17,7 +17,7 @@ const Socials: React.FC = () => {
         >
           <div style={{ display: 'flex' }}>
             <a
-              href="https://discord.gg/RdSj9ZFA"
+              href="https://discord.gg/Bvkhmf7zGG"
               target="_blank"
               rel="noopener noreferrer"
               className="socialLink"

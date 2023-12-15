@@ -15,7 +15,7 @@ Once the webpage has loaded, changes made to files inside the `src/` directory (
 
 # Follow Us
 
-Follow ethscriber on [𝕏](https://x.com/ethscriber) or join our [discord](https://discord.gg/RdSj9ZFA)
+Follow ethscriber on [𝕏](https://x.com/ethscriber) or join our [discord](https://discord.gg/Bvkhmf7zGG)
 
 # Learn more
 
