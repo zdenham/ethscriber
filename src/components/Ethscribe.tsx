@@ -152,6 +152,7 @@ export function Ethscribe() {
           border: none;
           text-overflow: ellipsis;
           overflow: hidden;
+          white-space: nowrap;
         }
 
         .ethscribe-button {
